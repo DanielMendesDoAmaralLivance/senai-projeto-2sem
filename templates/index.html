@@ -1,7 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
 <!-- Filtros de OS -->
-
 <div class="form-group">
   <label for="searchInput">Procurar</label>
   <input type="text" class="form-control" id="searchInput" />
@@ -49,23 +48,23 @@
     </div>
   </div>
 </div>
+<button type="button" class="btn btn-primary btn-block">Filtrar</button>
 
 <hr />
 
 <!-- Listagem de OS -->
-
 <div class="container d-flex flex-column align-items-center">
   <div class="card my-2 fluid">
     <div class="card-body">
       <h5 class="card-title">Consertar ferrovia</h5>
+      <h6 class="card-subtitle mb-2 text-muted">De x à y</h6>
       <p class="card-text">
         A ferrovia do treço 601 está com obstruções que podem ser prejudiciais
         aos veículos ferroviários. Devemos ...
       </p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Criado por:</li>
-      <li class="list-group-item">Criado em:</li>
+      <li class="list-group-item">De x à y</li>
       <li class="list-group-item">Endereço:</li>
     </ul>
     <div class="card-body">
@@ -78,14 +77,51 @@
   <div class="card my-2 fluid">
     <div class="card-body">
       <h5 class="card-title">Consertar ferrovia</h5>
+      <h6 class="card-subtitle mb-2 text-muted">De x à y</h6>
       <p class="card-text">
         A ferrovia do treço 601 está com obstruções que podem ser prejudiciais
         aos veículos ferroviários. Devemos ...
       </p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Criado por:</li>
-      <li class="list-group-item">Criado em:</li>
+      <li class="list-group-item">Endereço:</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Recusar</a>
+      <a href="#" class="card-link">Aprovar</a>
+      <a href="#" class="card-link">Editar</a>
+    </div>
+  </div>
+
+  <div class="card my-2 fluid">
+    <div class="card-body">
+      <h5 class="card-title">Consertar ferrovia</h5>
+      <h6 class="card-subtitle mb-2 text-muted">De x à y</h6>
+      <p class="card-text">
+        A ferrovia do treço 601 está com obstruções que podem ser prejudiciais
+        aos veículos ferroviários. Devemos ...
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Endereço:</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Recusar</a>
+      <a href="#" class="card-link">Aprovar</a>
+      <a href="#" class="card-link">Editar</a>
+    </div>
+  </div>
+
+  <div class="card my-2 fluid">
+    <div class="card-body">
+      <h5 class="card-title">Consertar ferrovia</h5>
+      <h6 class="card-subtitle mb-2 text-muted">De x à y</h6>
+      <p class="card-text">
+        A ferrovia do treço 601 está com obstruções que podem ser prejudiciais
+        aos veículos ferroviários. Devemos ...
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
       <li class="list-group-item">Endereço:</li>
     </ul>
     <div class="card-body">
@@ -95,4 +131,13 @@
     </div>
   </div>
 </div>
+
+<!-- Botão flutuante para adicionar OS -->
+<button
+  class="btn btn-primary rounded-circle position-fixed d-flex justify-content-center align-items-center"
+  style="width: 45px; height: 45px; bottom: 20px; right: 20px"
+>
+  <h4>+</h4>
+</button>
+
 {% endblock %}
