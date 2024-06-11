@@ -53,19 +53,17 @@
 <hr />
 
 <!-- Listagem de OS -->
-<div class="container d-flex flex-column align-items-center">
+<div class="container d-flex flex-column align-items-center" id="os-list">
+  {% for service_order in service_orders %}
+
   <div class="card my-2 fluid">
     <div class="card-body">
-      <h5 class="card-title">Consertar ferrovia</h5>
-      <h6 class="card-subtitle mb-2 text-muted">De x à y</h6>
-      <p class="card-text">
-        A ferrovia do treço 601 está com obstruções que podem ser prejudiciais
-        aos veículos ferroviários. Devemos ...
-      </p>
+      <h5 class="card-title">{{ service_order.title }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        {{ service_order.start_date }} à {{ service_order.end_date }}
+      </h6>
+      <p class="card-text">{{ service_order.description }}</p>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Endereço:</li>
-    </ul>
     <div class="card-body">
       <a href="#" class="card-link">Recusar</a>
       <a href="#" class="card-link">Aprovar</a>
@@ -73,62 +71,7 @@
     </div>
   </div>
 
-  <div class="card my-2 fluid">
-    <div class="card-body">
-      <h5 class="card-title">Consertar ferrovia</h5>
-      <h6 class="card-subtitle mb-2 text-muted">De x à y</h6>
-      <p class="card-text">
-        A ferrovia do treço 601 está com obstruções que podem ser prejudiciais
-        aos veículos ferroviários. Devemos ...
-      </p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Endereço:</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Recusar</a>
-      <a href="#" class="card-link">Aprovar</a>
-      <a href="#" class="card-link">Editar</a>
-    </div>
-  </div>
-
-  <div class="card my-2 fluid">
-    <div class="card-body">
-      <h5 class="card-title">Consertar ferrovia</h5>
-      <h6 class="card-subtitle mb-2 text-muted">De x à y</h6>
-      <p class="card-text">
-        A ferrovia do treço 601 está com obstruções que podem ser prejudiciais
-        aos veículos ferroviários. Devemos ...
-      </p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Endereço:</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Recusar</a>
-      <a href="#" class="card-link">Aprovar</a>
-      <a href="#" class="card-link">Editar</a>
-    </div>
-  </div>
-
-  <div class="card my-2 fluid">
-    <div class="card-body">
-      <h5 class="card-title">Consertar ferrovia</h5>
-      <h6 class="card-subtitle mb-2 text-muted">De x à y</h6>
-      <p class="card-text">
-        A ferrovia do treço 601 está com obstruções que podem ser prejudiciais
-        aos veículos ferroviários. Devemos ...
-      </p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Endereço:</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Recusar</a>
-      <a href="#" class="card-link">Aprovar</a>
-      <a href="#" class="card-link">Editar</a>
-    </div>
-  </div>
+  {% endfor %}
 </div>
 
 <!-- Botão flutuante para abrir modal de adicionar OS -->
@@ -170,7 +113,11 @@
           </div>
           <div class="form-group">
             <label for="os-description">Descrição</label>
-            <textarea class="form-control" id="os-title" rows="4"></textarea>
+            <textarea
+              class="form-control"
+              id="os-description"
+              rows="4"
+            ></textarea>
           </div>
           <div class="form-group">
             <label>Intervalo de tempo</label>
@@ -180,6 +127,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Data de início"
+                  id="os-start-date"
                 />
               </div>
               <div class="col">
@@ -187,6 +135,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Data de fim"
+                  id="os-end-date"
                 />
               </div>
             </div>
@@ -194,7 +143,9 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-block">Salvar</button>
+        <button type="button" class="btn btn-primary btn-block" id="save-os">
+          Salvar
+        </button>
       </div>
     </div>
   </div>
