@@ -21,6 +21,9 @@ $(document).ready(async function() {
         })
         const data = await response.json();
 
-        if(data.success) $("#os-modal").modal("hide")
+        if(data.success) {
+            $("#os-modal").modal("hide")
+            listOs();
+        }
     })
 });

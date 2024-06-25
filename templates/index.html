@@ -31,11 +31,24 @@
     <div class="custom-control custom-radio custom-control-inline">
       <input
         type="radio"
-        id="status-active"
+        id="status-pending"
         name="status"
         class="custom-control-input"
       />
-      <label class="custom-control-label" for="status-active">Ativas</label>
+      <label class="custom-control-label" for="status-pending"
+        >Pendentes</label
+      >
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input
+        type="radio"
+        id="status-approved"
+        name="status"
+        class="custom-control-input"
+      />
+      <label class="custom-control-label" for="status-approved"
+        >Aprovadas</label
+      >
     </div>
     <div class="custom-control custom-radio custom-control-inline">
       <input
@@ -53,26 +66,7 @@
 <hr />
 
 <!-- Listagem de OS -->
-<div class="container d-flex flex-column align-items-center" id="os-list">
-  {% for service_order in service_orders %}
-
-  <div class="card my-2 fluid">
-    <div class="card-body">
-      <h5 class="card-title">{{ service_order.title }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">
-        {{ service_order.start_date }} à {{ service_order.end_date }}
-      </h6>
-      <p class="card-text">{{ service_order.description }}</p>
-    </div>
-    <div class="card-body">
-      <a href="#" class="card-link">Recusar</a>
-      <a href="#" class="card-link">Aprovar</a>
-      <a href="#" class="card-link">Editar</a>
-    </div>
-  </div>
-
-  {% endfor %}
-</div>
+<div class="container d-flex flex-column align-items-center" id="os-list"></div>
 
 <!-- Botão flutuante para abrir modal de adicionar OS -->
 <button
@@ -84,7 +78,7 @@
   <h4>+</h4>
 </button>
 
-<!-- Modal -->
+<!-- Modal de criar/editar OS -->
 <div
   class="modal fade"
   id="os-modal"
