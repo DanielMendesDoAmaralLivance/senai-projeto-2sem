@@ -19,12 +19,18 @@ def get():
     
     return {'service_orders': [service_order.to_dict() for service_order in service_orders]}
 
+@app.route('/service-order/<id>', methods = ['GET'])
+def get_by_id(id):
+    service_order = ServiceOrderModel.find_by_id(id)
+    
+    print(service_order.start_date)
+    
+    return {'service_order': service_order.to_dict()}
+
 @app.route('/service-order', methods = ['POST'])
 def post():
     if request.method == 'POST':
         request_data = request.get_json()
-        
-        print(request_data['title'])
         
         service_order = ServiceOrderModel(
             request_data['title'],
@@ -34,7 +40,27 @@ def post():
             date.fromisoformat(request_data['end_date'])
         )
         
+        print(request_data['start_date'])
+        
         service_order.created_at = date.today()
+        service_order.updated_at = date.today()
+        
+        service_order.save_to_db()
+        
+        return jsonify(success=True)
+    else:
+        return jsonify(success=False)
+    
+@app.route('/service-order/<id>', methods = ['PUT'])
+def put(id):
+    if request.method == 'PUT':
+        request_data = request.get_json()
+        
+        service_order = ServiceOrderModel.find_by_id(id)
+        service_order.title = request_data['title']
+        service_order.description = request_data['description']
+        service_order.start_date = date.fromisoformat(request_data['start_date'])
+        service_order.end_date = date.fromisoformat(request_data['end_date'])
         service_order.updated_at = date.today()
         
         service_order.save_to_db()

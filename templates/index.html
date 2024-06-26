@@ -72,8 +72,7 @@
 <button
   class="btn btn-primary rounded-circle position-fixed d-flex justify-content-center align-items-center"
   style="width: 45px; height: 45px; bottom: 20px; right: 20px"
-  data-toggle="modal"
-  data-target="#os-modal"
+  id="add-os-button"
 >
   <h4>+</h4>
 </button>
@@ -89,7 +88,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nova OS</h5>
+        <h5 class="modal-title" id="modal-title"></h5>
         <button
           type="button"
           class="close"
@@ -137,7 +136,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-block" id="save-os">
+        <button type="button" class="btn btn-primary btn-block" id="save-os" data-os-id="">
           Salvar
         </button>
       </div>
