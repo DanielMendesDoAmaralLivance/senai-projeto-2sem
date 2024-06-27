@@ -29,6 +29,10 @@ class ServiceOrderModel(db.Model):
     @classmethod
     def find_by_id(cls, _id) -> "ServiceOrderModel":
         return cls.query.filter_by(id=_id).first()
+    
+    @classmethod
+    def find_by_status(cls, _status):
+        return cls.query.filter_by(status=_status).all()
 
     def save_to_db(self) -> None:
         db.session.add(self)
