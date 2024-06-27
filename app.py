@@ -23,8 +23,6 @@ def get():
 def get_by_id(id):
     service_order = ServiceOrderModel.find_by_id(id)
     
-    print(service_order.start_date)
-    
     return {'service_order': service_order.to_dict()}
 
 @app.route('/service-order', methods = ['POST'])
@@ -39,8 +37,6 @@ def post():
             date.fromisoformat(request_data['start_date']),
             date.fromisoformat(request_data['end_date'])
         )
-        
-        print(request_data['start_date'])
         
         service_order.created_at = date.today()
         service_order.updated_at = date.today()
@@ -62,6 +58,24 @@ def put(id):
         service_order.start_date = date.fromisoformat(request_data['start_date'])
         service_order.end_date = date.fromisoformat(request_data['end_date'])
         service_order.updated_at = date.today()
+        
+        service_order.save_to_db()
+        
+        return jsonify(success=True)
+    else:
+        return jsonify(success=False)
+    
+@app.route('/service-order/<id>/status/<status>', methods = ['PUT'])
+def put_service_order_status(id, status):
+    if request.method == 'PUT':
+        service_order = ServiceOrderModel.find_by_id(id)
+        print(status)
+        if(status == "2"):
+            service_order.status = ServiceOrderStatusEnum.APPROVED 
+        else:
+            service_order.status = ServiceOrderStatusEnum.REFUSED
+        
+        print(service_order.status)
         
         service_order.save_to_db()
         

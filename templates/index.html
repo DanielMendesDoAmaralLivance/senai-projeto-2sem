@@ -35,9 +35,7 @@
         name="status"
         class="custom-control-input"
       />
-      <label class="custom-control-label" for="status-pending"
-        >Pendentes</label
-      >
+      <label class="custom-control-label" for="status-pending">Pendentes</label>
     </div>
     <div class="custom-control custom-radio custom-control-inline">
       <input
@@ -136,8 +134,55 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-block" id="save-os" data-os-id="">
+        <button
+          type="button"
+          class="btn btn-primary btn-block"
+          id="save-os"
+          data-os-id=""
+        >
           Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de confirmar/recusar ação -->
+<div
+  class="modal fade"
+  id="confirm-refuse-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirm-refuse-modal-title"></h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-refuse-modal-description"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Não
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="confirm-refuse-button"
+          data-os-id=""
+          data-action=""
+        >
+          Sim
         </button>
       </div>
     </div>
