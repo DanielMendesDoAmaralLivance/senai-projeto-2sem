@@ -83,17 +83,6 @@ def put_service_order_status(id, status):
     else:
         return jsonify(success=False)
 
-@app.route('/service-order/status/<int:status>', methods=['GET'])
-def get_by_status(status):  
-    service_orders = ServiceOrderModel.find_by_status(status)
-    
-    if service_orders:
-        filtered_orders = [order.to_dict() for order in service_orders]
-    else:
-        filtered_orders = []
-    
-    return jsonify({"service_orders": filtered_orders})
-
 
 with app.app_context():
     db.create_all()

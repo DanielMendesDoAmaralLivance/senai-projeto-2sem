@@ -38,40 +38,6 @@ $(document).ready(async function () {
 
         openOsModal()
     })
-
-    $("#filter-os-button").on("click", async (event) => {
-        event.preventDefault();
-    //  TESTE 01: FAIL, POIS A ROTA NÃO IRÁ RECEBER OS DADOS DESTA FORMA
-        /* var searchInput = document.getElementById('searchInput').value;
-        var startDate = document.querySelector('input[placeholder="Data de início"]').value;
-        var endDate = document.querySelector('input[placeholder="Data de fim"]').value;
-        var status = document.querySelector('#div-os-status input[type="radio"]:checked').id;
-
-        var formData = {
-            description: searchInput,
-            created_at: startDate,
-            end_date: endDate,
-            status: status
-        }; */
-
-        
-        /* var queryString = new URLSearchParams(formData).toString();
-        console.log('queryString... ',queryString);
-
-        listOs(formData); */
-
-    //  TESTE 02: FAIL, SIMPLESMENTE NÃO RETORNA DADO ALGUM. APAREMENTEMENTE A ROTA FOI CRIADA E ESTÁ LEGÍVEL NA APLICAÇÃO, O QUE CONCLUO SER NA CONSULTA OU NO BANCO
-        var status = document.querySelector('#div-os-status input[type="radio"]:checked').id;
-        var url = '/service-order/status/' + status;
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log('Dados filtrados:', data);
-            })
-            .catch(error => console.error('Erro:', error));
-
-    })
 });
 
 openOsModal = async (id) => {

@@ -15,7 +15,14 @@ $(document).ready(function () {
   });
 });
 
-const listOs = async () => {
+$("#filter-os-button").on("click", async () => {
+  const search = $("#searchInput").val();
+  const statusToFilter = $("input[name='status']:checked").val();
+
+  listOs(null, search, statusToFilter);
+});
+
+const listOs = async (_, search = "", statusToFilter = "0") => {
   const response = await fetch("/service-order");
   const data = await response.json();
 
@@ -36,8 +43,22 @@ const listOs = async () => {
     </div>
   `);
 
+  let filteredServiceOrders = data?.service_orders;
+
+  if (search) {
+    filteredServiceOrders = filteredServiceOrders?.filter(
+      (x) => String(x.id).includes(search) || x.title?.includes(search) || x.description?.includes(search)
+    );
+  }
+
+  if (Number(statusToFilter)) {
+    filteredServiceOrders = filteredServiceOrders?.filter(
+      (x) => Number(x.status) === Number(statusToFilter)
+    );
+  }
+
   setTimeout(() => {
-    if (!data?.service_orders || data?.service_orders.length === 0) {
+    if (!filteredServiceOrders || filteredServiceOrders?.length === 0) {
       $("#os-list").html(`
         <p>
           Nenhuma OS encontrada. Que tal criar clicando no botão flutuante abaixo?
@@ -45,7 +66,7 @@ const listOs = async () => {
       `);
     } else {
       $("#os-list").html(`
-      ${data.service_orders.map((service_order) => {
+      ${filteredServiceOrders.map((service_order) => {
         return `
                   <div class="card my-2 fluid" style="min-width: 90%;">
                       <div class="card-body">
